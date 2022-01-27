@@ -41,6 +41,18 @@ class Cell {
     }
   }
 
+  public void removePossibility(int num) {
+    int[] newPossibilities = new int[possibleDigits.length];
+    int k = 0;
+    for (int i = 0; i < possibleDigits.length; i++) {
+      if (possibleDigits[i] != num) {
+        newPossibilities[k] = possibleDigits[i];
+        k++;
+      }
+    }
+    possibleDigits = newPossibilities;
+  }
+
   public int[] getPossibleDigits() {
     if (hasDigit) {
       return new int[0];
@@ -72,6 +84,7 @@ class Cell {
     this.col = col;
     this.pos = new PVector(col, row);
     initNeighbors();
+    initPossibleDigits();
   }
   public Cell(int col, int row, int digit) {
     this.row = row;
@@ -79,6 +92,13 @@ class Cell {
     this.pos = new PVector(col, row);
     setDigit(digit);
     initNeighbors();
+  }
+
+  public void initPossibleDigits() {
+    possibleDigits = new int[9];
+    for (int i = 0; i < 9; i++) {
+      possibleDigits[i] = i + 1;
+    }
   }
 
   private void initNeighbors() {

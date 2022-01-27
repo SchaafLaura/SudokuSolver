@@ -12,6 +12,26 @@ class Grid {
     initCells();
   }
 
+  public void updatePossibilities() {
+
+    for (int i = 0; i < constraints.length; i++) {
+
+      Constraint c = constraints[i];
+      if (c instanceof UniquenessConstraint) {
+        for (int j = 0; j < c.cellIndices.length; j++) {
+          Cell currentCell = G.cells[(int) c.cellIndices[j].x][(int) c.cellIndices[j].y];
+          if (currentCell.hasDigit) {
+            for (int k = 0; k < c.cellIndices.length; k++) {
+              if (k != j) {
+                G.cells[(int) c.cellIndices[k].x][(int) c.cellIndices[k].y].removePossibility(currentCell.getDigit());
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   public int getCellValue(int x, int y) {
     return cells[x][y].digit;
   }
@@ -131,7 +151,8 @@ class Grid {
     displayLines();
     displayHighlights();
     displayNumbers();
-    displayConstraints();
+    //displayConstraints();
+    displayPossibilities();
   }
 
   void displayConstraints() {
@@ -187,16 +208,17 @@ class Grid {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         possibilities = getPossibilitiesAtXY(i, j);
+        PVector drawPos = indicesToPos(i, j);
+        String str = intArrayToString(possibilities);
+        fill(0);
+        textSize(10);
+        text(str, drawPos.x - 25, drawPos.y + 10);
       }
     }
   }
 
   int[] getPossibilitiesAtXY(int x, int y) {
-    int[] ret = new int[9];
-
-
-
-    return ret;
+    return cells[x][y].getPossibleDigits();
   }
 
   PVector[] getBox(int n) {

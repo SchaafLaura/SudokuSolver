@@ -1,7 +1,20 @@
 Grid G;
 void setup() {
   G = new Grid();
+  addConstraints();
+  G.cells[3][5].setDigit(8);
+  G.updatePossibilities();
   size(1000, 1000);
+}
+
+String intArrayToString(int[] input) {
+  String ret = "";
+  for (int i = 0; i < input.length; i++) {
+    if (input[i] != 0) {
+      ret += input[i];
+    }
+  }
+  return ret;
 }
 
 
@@ -19,7 +32,9 @@ void draw() {
   G.addHightlights(new Highlight(G.cells[x][y].pos, color(255, 255, 0)));
 
   G.clearConstraints();
+}
 
+public void addConstraints() {
   // regular Sudoku constraints
   for (int i = 0; i < 9; i++) {
     G.addConstraint(new UniquenessConstraint(G.getCol(i)));
