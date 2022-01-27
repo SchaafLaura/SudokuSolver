@@ -10,6 +10,9 @@ class Cell {
   PVector[] dg1Neighbors; // diagonal with positive slope
   PVector[] dg2Neighbors; // diagonal with negative slope
 
+  int[] possibleDigits;
+
+
   public PVector[] getRowNeighbors() {
     return rowNeighbors.clone();
   }
@@ -35,6 +38,22 @@ class Cell {
       return digit;
     } else {
       return 0;
+    }
+  }
+
+  public int[] getPossibleDigits() {
+    if (hasDigit) {
+      return new int[0];
+    } else {
+      if (possibleDigits == null) {
+        possibleDigits = new int[9];
+        for (int i = 0; i < 9; i++) {
+          possibleDigits[i] = i + 1;
+        }
+        return possibleDigits;
+      } else {
+        return possibleDigits;
+      }
     }
   }
 
