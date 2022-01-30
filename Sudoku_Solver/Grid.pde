@@ -21,6 +21,31 @@ class Grid {
       }
     }
   }
+  
+  public int getDigitAtXY(int x, int y) {
+    return cells[x][y].digit;
+  }
+  
+  IntVector[] getColumIndices(int k) {
+    IntVector[] ret = new IntVector[h];
+    for (int i = 0; i < h; i++) {
+      ret[i] = new IntVector(k, i);
+    }
+    return ret;
+  }
+  
+  IntVector[] getRowIndices(int k) {
+    IntVector[] ret = new IntVector[w];
+    for (int i = 0; i < w; i++) {
+      ret[i] = new IntVector(i, k);
+    }
+    return ret;
+  }
+  
+  IntVector[] getPositiveDiagonalIndices(int k){
+    int totalNumberOfDiagonals = w + h - 1;
+  }
+  
 }
 
 
@@ -58,9 +83,7 @@ class Grid {
     }
   }
 
-  public int getCellValue(int x, int y) {
-    return cells[x][y].digit;
-  }
+  
 
   void addConstraint(Constraint c) {
     Constraint[] newConstraints = new Constraint[constraints.length + 1];
@@ -71,21 +94,9 @@ class Grid {
     constraints = newConstraints.clone();
   }
 
-  PVector[] getCol(int x) {
-    PVector[] ret = new PVector[9];
-    for (int i = 0; i < 9; i++) {
-      ret[i] = new PVector(x, i);
-    }
-    return ret;
-  }
+  
 
-  PVector[] getRow(int x) {
-    PVector[] ret = new PVector[9];
-    for (int i = 0; i < 9; i++) {
-      ret[i] = new PVector(i, x);
-    }
-    return ret;
-  }
+  
 
   PVector[] getDg1(int x, int y) {
     PVector[] ret = new PVector[(y + x < 8 ? y + x : 16 - x - y) + 1];
