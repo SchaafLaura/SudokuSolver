@@ -1,5 +1,31 @@
 class Grid {
   Cell[][] cells;
+  int w = 9;
+  int h = 9;
+
+  public Grid() {
+    initCells();
+  }
+
+  public Grid(int w, int h) {
+    this.w = w;
+    this.h = h;
+    initCells();
+  }
+
+  private void initCells() {
+    cells = new Cell[w][h];
+    for (int i = 0; i < w; i++) {
+      for (int j = 0; j < h; j++) {
+        cells[i][j] = new Cell();
+      }
+    }
+  }
+}
+
+
+/*class Grid {
+  Cell[][] cells;
   //PVector[] highlights;
   Highlight[] highlights;
   Constraint[] constraints;
@@ -290,4 +316,4 @@ class Grid {
     }
     return ret;
   }
-}
+}*/

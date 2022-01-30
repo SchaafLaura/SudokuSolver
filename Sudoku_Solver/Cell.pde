@@ -1,4 +1,16 @@
 class Cell {
+  int digit = -1;
+
+  public Cell() {
+  }
+
+  public Cell(int digit) {
+    this.digit = digit;
+  }
+}
+
+/*
+class Cell {
   boolean hasDigit;
   int digit;
   int row;
@@ -186,3 +198,4 @@ class Cell {
     }
   }
 }
+*/

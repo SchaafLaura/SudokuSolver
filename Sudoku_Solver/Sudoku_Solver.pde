@@ -1,3 +1,37 @@
+void setup() {
+  size(1000, 1000);
+}
+
+void draw() {
+  background(0);
+}
+
+PVector indicesToScreenPosition(IntVector indices) {
+  PVector ret = new PVector();
+
+
+
+
+
+
+  return ret;
+}
+
+
+
+
+/* 
+
+TODOs for Refactoring:
+  - cells do not have default neighbors. Instead they are created dynamically by considering what constraints they are part of.
+  - creation of a "Sudoku" class, which has
+    - fields  : Grid, Constraint(s), 
+    - methods : displayGrid, placeDigit, 
+  - 
+
+
+*/
+/*
 Grid G;
 void setup() {
   G = new Grid();
@@ -55,3 +89,4 @@ public void addConstraints() {
   G.addConstraint(new UniquenessConstraint(G.getDg1(2, 8)));
   G.addConstraint(new SumConstraint(G.getDg1(2, 8), 36));
 }
+*/

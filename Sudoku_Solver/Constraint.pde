@@ -1,4 +1,70 @@
 abstract class Constraint {
+  IntVector[] cellIndices;
+
+  public Constraint(IntVector[] cellIndices) {
+    this.cellIndices = cellIndices;
+  }
+
+  public abstract boolean isSatisfied();
+  public abstract boolean isPossible();
+}
+
+class UniquenessConstraint extends Constraint {
+  public UniquenessConstraint(IntVector[]cellIndices) {
+    super(cellIndices);
+  }
+
+  public boolean isSatisfied() {
+    for (int i = 0; i < cellIndices.length; i++) {
+      //  int currVal = get Value of cell at cellIndices[i]
+      //  if currVal == -1
+      //    return false
+      for (int j = 0; j < cellIndices.length; j++) {
+        if (i == j) {
+          continue;
+        }
+        //  int checkVal = get value of cell at cellIndices[j]
+        //  if checkVal == -1 || currVal == checkVal
+        //    return false
+      }
+    }
+    return true;
+  }
+
+  public boolean isPossible() {
+    // TODO: check if there are enough digits in the possibilities to satisfy the constraint
+    return true;
+  }
+}
+
+
+class SumConstraint extends Constraint {
+  int sum;
+  public SumConstraint(IntVector[] cellIndices, int sum) {
+    super(cellIndices);
+    this.sum = sum;
+  }
+
+  public boolean isSatisfied() {
+    int val = 0;
+    for (int i = 0; i < cellIndices.length; i++) {
+      //  if value of cell at cellIndices[i] is -1 
+      //    return false
+      //  else
+      //    val += value of cell at cellIndices[i]
+    }
+    return (val == sum);
+  }
+
+  public boolean isPossible() {
+    // return (can I add up one of each of the possibilities to make the total add to sum?)
+    return true;
+  }
+}
+
+
+
+/*abstract class Constraint {
   PVector[] cellIndices;
   color c;
 
@@ -78,4 +144,4 @@ class UniquenessConstraint extends Constraint {
   public boolean isPossible() {
     return true;
   }
-}
+}*/
