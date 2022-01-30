@@ -1,8 +1,11 @@
-abstract class Command{
+abstract class Command {
   abstract void execute();
   abstract void undo();
 }
 
-class PlaceDigit extends Command{
-  
+class PlaceDigit extends Command {
+  void execute() {
+  }
+  void undo() {
+  }
 }
