@@ -1,21 +1,30 @@
+SudokuDisplayer sudokuDisplay;
 void setup() {
   size(1000, 1000);
+  sudokuDisplay = new SudokuDisplayer();
+  Sudoku sudoku = new Sudoku();
+  sudokuDisplay.sudoku = sudoku;
+  PGraphics pg = createGraphics(width, height);
+  sudokuDisplay.image = pg;
 }
 
 void draw() {
-  background(0);
+  background(255);
+  sudokuDisplay.display();
 }
 
 PVector indicesToScreenPosition(IntVector indices) {
   PVector ret = new PVector();
 
-
-
-
-
-
   return ret;
 }
+
+
+
+
+
+
+
 
 
 

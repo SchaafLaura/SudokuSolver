@@ -1,7 +1,8 @@
-class Sudoku{
+class Sudoku {
   Grid grid;
   Constraint[] constraints;
-  public Sudoku(){
-    
+  public Sudoku() {
+    this.grid = new Grid();
+    this.constraints = new Constraint[0];
   }
 }
